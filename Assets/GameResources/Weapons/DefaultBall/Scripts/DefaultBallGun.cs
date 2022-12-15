@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace GameResources.Weapons.DefaultBall.Scripts
 {
+    using System;
     using System.Collections;
     using PathCreation;
     using UnityEngine.Pool;
@@ -28,20 +29,56 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         
         private Coroutine _coroutine;
 
-        private ObjectPool<DefaultGunProjectile> _pool;
+        private ObjectPool<DefaultGunProjectile> _projectilePool;
+
+        private void Awake() => InitProjectilePool();
 
         private void OnEnable()
         {
-            _pool = new ObjectPool<DefaultGunProjectile>
+            StartAutoFireCoroutine();
+        }
+
+        private void OnDisable()
+        {
+            StopAutoFireCoroutine();
+
+            _projectilePool.Clear();
+        }
+
+        private void OnDestroy() => DestroyProjectilePool();
+
+        private void InitProjectilePool()
+        {
+            _projectilePool = new ObjectPool<DefaultGunProjectile>
             (
-                CreateFunc, 
-                ActionOnGet, 
-                ActionOnRelease, 
-                ActionOnDestroy, 
+                CreateFunc,
+                ActionOnGet,
+                ActionOnRelease,
+                ActionOnDestroy,
                 false
             );
-            
+        }
+
+        private void DestroyProjectilePool()
+        {
+            _projectilePool = null;
+        }
+
+        private void StartAutoFireCoroutine()
+        {
             _coroutine = StartCoroutine(AutoFire());
+        }
+
+        private void StopAutoFireCoroutine()
+        {
+            if (_coroutine == null)
+            {
+                return;
+            }
+
+            StopCoroutine(_coroutine);
+
+            _coroutine = null;
         }
 
         private static void ActionOnDestroy(DefaultGunProjectile projectile) => Destroy(projectile.gameObject);
@@ -75,20 +112,6 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             return projectile;
         }
 
-        private void OnDisable()
-        {
-            if (_coroutine == null)
-            {
-                return;
-            }
-
-            StopCoroutine(_coroutine);
-
-            _coroutine = null;
-            
-            _pool.Clear();
-        }
-
         private IEnumerator AutoFire()
         {
             var delay = new WaitForSeconds(60 / fireRate);
@@ -103,7 +126,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
         private void Fire()
         {
-            var projectile = _pool.Get();
+            var projectile = _projectilePool.Get();
             
             var path = GetProjectilePath(testTarget.position);
 
@@ -119,7 +142,8 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             var middle2 = startPosition + (direction / 3 * 2);
 
             var verticalDistance = target.y - startPosition.y;
-            var middleHeight = Mathf.Max(verticalDistance, startPosition.y) + direction.magnitude * 0.1f;
+            var middleHeight = Mathf.Max(verticalDistance, startPosition.y);
+            middleHeight += direction.magnitude * 0.1f;
             
             middle1.y = middleHeight;
             middle2.y = middleHeight;
@@ -139,6 +163,6 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             return path;
         }
 
-        private void OnProjectileDeath(DefaultGunProjectile projectile) => _pool.Release(projectile);
+        private void OnProjectileDeath(DefaultGunProjectile projectile) => _projectilePool.Release(projectile);
     }
 }
