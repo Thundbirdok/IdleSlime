@@ -10,7 +10,7 @@ namespace GameResources.Enemies.Scripts
     public class Enemy : MonoBehaviour, IDamagable
     {
         public event Action<IDamagable> OnDeath;
-        public event Action OnAmountChange;
+        public event Action<IDamagable, int> OnAmountChange;
 
         public Vector3 Position => transform.position;
         public Vector3 HealthBarPosition => healthBarPosition.position;
@@ -149,7 +149,7 @@ namespace GameResources.Enemies.Scripts
                     continue;
                 }
                 
-                if (_distanceToTarget > stopMoveDistance)
+                if (_distanceToTarget > stopMoveDistance + 0.001f)
                 {
                     yield return null;
 
@@ -165,6 +165,6 @@ namespace GameResources.Enemies.Scripts
         private void Attack() => _target.Damage(damage);
 
         private void InvokeOnDeath() => OnDeath?.Invoke(this);
-        private void InvokeOnAmountChange() => OnAmountChange?.Invoke();
+        private void InvokeOnAmountChange(int amount) => OnAmountChange?.Invoke(this,  amount);
     }
 }
