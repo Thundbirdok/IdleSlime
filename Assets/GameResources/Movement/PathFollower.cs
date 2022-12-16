@@ -18,12 +18,16 @@ namespace GameResources.Movement
 
         [SerializeField]
         private bool isSimulateGravity;
+
+        private const float EPSILON = 0.001f;
         
         private Transform _transform;
         private VertexPath _vertexPath;
 
         private float _distance;
 
+        private float _time;
+        
         private Vector3 _previousPosition;
         
         private void OnDisable() => IsMoving = false;
@@ -34,12 +38,15 @@ namespace GameResources.Movement
             _vertexPath = vertexPath;
 
             _distance = 0;
-
+            _time = 0;
+            
             _previousPosition = _transform.position;
             
             IsMoving = true;
         }
 
+        
+        
         public void Move()
         {
             if (IsMoving == false)
@@ -47,20 +54,22 @@ namespace GameResources.Movement
                 return;
             }
 
-            SetDistance();
+            //SetDistance();
 
+            _time += Time.fixedDeltaTime;
+            
             _previousPosition = _transform.position;
             
-            if (_distance >= _vertexPath.length)
+            if (_time >= 1)
             {
-                _transform.position = _vertexPath.GetPointAtDistance(_vertexPath.length);
+                _transform.position = _vertexPath.GetPointAtTime(1);
                 
                 OnTarget?.Invoke();
                 
                 return;
             }
             
-            _transform.position = _vertexPath.GetPointAtDistance(_distance);
+            _transform.position = _vertexPath.GetPointAtTime(_time);
         }
 
         private void SetDistance()
@@ -79,7 +88,7 @@ namespace GameResources.Movement
 
             float multiplier;
 
-            if (direction.magnitude <= 0.001)
+            if (direction.magnitude <= EPSILON)
             {
                 multiplier = 1;
             }

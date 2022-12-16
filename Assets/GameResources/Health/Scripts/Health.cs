@@ -7,6 +7,7 @@ namespace GameResources.Health.Scripts
     [Serializable]
     public class Health
     {
+        public event Action OnValueChange; 
         public event Action OnDeath;
 
         public bool IsDead => _amount <= 0;
@@ -34,8 +35,13 @@ namespace GameResources.Health.Scripts
                 {
                     _amount = 0;
                 }
+
+                OnValueChange?.Invoke();
                 
-                OnDeath?.Invoke();
+                if (_amount == 0)
+                {
+                    OnDeath?.Invoke();
+                }
             }
         }
 

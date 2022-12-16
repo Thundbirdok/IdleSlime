@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health:
     maxHealth: 100
-  speed: 2.5
+  speed: 3.5
   stopMoveDistance: 1.5
 --- !u!65 &738212021694887197
 BoxCollider:

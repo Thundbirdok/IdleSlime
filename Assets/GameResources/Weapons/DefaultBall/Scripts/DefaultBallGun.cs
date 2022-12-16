@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace GameResources.Weapons.DefaultBall.Scripts
 {
-    using System;
     using System.Collections;
+    using GameResources.Enemies.Scripts;
     using PathCreation;
     using UnityEngine.Pool;
 
@@ -25,7 +25,11 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         private Transform projectilesContainer;
 
         [SerializeField]
-        private Transform testTarget;
+        private EnemySpawner spawner;
+
+        private const float ADDITIONAL_HEIGHT_WITH_DISTANCE = 0.2f;
+        private const float MIDDLE_1_POINT_DISTANCE = 0.333f;
+        private const float MIDDLE_2_POINT_DISTANCE = 0.666f;
         
         private Coroutine _coroutine;
 
@@ -33,10 +37,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
         private void Awake() => InitProjectilePool();
 
-        private void OnEnable()
-        {
-            StartAutoFireCoroutine();
-        }
+        private void OnEnable() => StartAutoFireCoroutine();
 
         private void OnDisable()
         {
@@ -81,7 +82,10 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             _coroutine = null;
         }
 
-        private static void ActionOnDestroy(DefaultGunProjectile projectile) => Destroy(projectile.gameObject);
+        private static void ActionOnDestroy(DefaultGunProjectile projectile)
+        {
+            Destroy(projectile.gameObject);
+        }
 
         private void ActionOnRelease(DefaultGunProjectile projectile)
         {
@@ -126,11 +130,44 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
         private void Fire()
         {
-            var projectile = _projectilePool.Get();
+            if (TryGetClosestEnemy(out var closestEnemy))
+            {
+                return;
+            }
             
-            var path = GetProjectilePath(testTarget.position);
+            var projectile = _projectilePool.Get();
+
+            var impactPosition = closestEnemy.PositionAfterSecond;
+            
+            var path = GetProjectilePath(impactPosition);
 
             projectile.Fire(path);
+        }
+
+        private bool TryGetClosestEnemy(out Enemy closestEnemy)
+        {
+            var minDistance = float.MaxValue;
+
+            closestEnemy = null;
+
+            foreach (var enemy in spawner.Enemies)
+            {
+                var distance = Vector3.Distance
+                (
+                    enemy.transform.position,
+                    transform.position
+                );
+
+                if (minDistance <= distance)
+                {
+                    continue;
+                }
+
+                minDistance = distance;
+                closestEnemy = enemy;
+            }
+
+            return closestEnemy == null;
         }
 
         private VertexPath GetProjectilePath(Vector3 target)
@@ -138,12 +175,13 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             var startPosition = projectileFirePoint.position;
             var direction = target - startPosition;
 
-            var middle1 = startPosition + (direction / 3);
-            var middle2 = startPosition + (direction / 3 * 2);
+            var middle1 = startPosition + direction * MIDDLE_1_POINT_DISTANCE;
+            var middle2 = startPosition + direction * MIDDLE_2_POINT_DISTANCE;
 
             var verticalDistance = target.y - startPosition.y;
             var middleHeight = Mathf.Max(verticalDistance, startPosition.y);
-            middleHeight += direction.magnitude * 0.1f;
+            
+            middleHeight += direction.magnitude * ADDITIONAL_HEIGHT_WITH_DISTANCE;
             
             middle1.y = middleHeight;
             middle2.y = middleHeight;
@@ -163,6 +201,9 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             return path;
         }
 
-        private void OnProjectileDeath(DefaultGunProjectile projectile) => _projectilePool.Release(projectile);
+        private void OnProjectileDeath(DefaultGunProjectile projectile)
+        {
+            _projectilePool.Release(projectile);
+        }
     }
 }

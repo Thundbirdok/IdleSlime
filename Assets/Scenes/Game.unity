@@ -615,7 +615,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 613474545495060480, guid: 95f9935b960930441a7d27a995301da3, type: 3}
   projectileFirePoint: {fileID: 1479843113}
   projectilesContainer: {fileID: 1719872943}
-  testTarget: {fileID: 204185942}
+  spawner: {fileID: 123654908}
 --- !u!114 &960816159
 MonoBehaviour:
   m_ObjectHideFlags: 0

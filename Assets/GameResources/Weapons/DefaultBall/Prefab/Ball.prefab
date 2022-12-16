@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 454970594834225725}
   - component: {fileID: 613474545495060480}
   - component: {fileID: 2892020211518912453}
+  - component: {fileID: -6570473493038200369}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -130,9 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathFollower:
-    IsMoving: 0
     speed: 12
     isSimulateGravity: 1
+  damage: 20
 --- !u!135 &2892020211518912453
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -146,3 +147,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-6570473493038200369
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454970594834225698}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -3,12 +3,16 @@ using UnityEngine;
 namespace GameResources.Enemies.Scripts
 {
     using System.Collections;
+    using System.Collections.Generic;
     using GameResources.Health.Scripts;
     using GameResources.Slime.Scripts;
     using UnityEngine.Pool;
 
     public class EnemySpawner : MonoBehaviour
     {
+        private List<Enemy> _enemies = new List<Enemy>();
+        public IReadOnlyList<Enemy> Enemies => _enemies;
+        
         [SerializeField]
         private Slime slime;
         
@@ -19,11 +23,11 @@ namespace GameResources.Enemies.Scripts
         private Transform enemyContainer;
 
         [SerializeField]
-        private float spawnRate = 12;
+        private float spawnRate = 6;
         
         [SerializeField]
         private Transform[] enemySpawnPositions;
-        
+
         private Coroutine _coroutine;
 
         private ObjectPool<Enemy> _pool;
@@ -65,24 +69,29 @@ namespace GameResources.Enemies.Scripts
             enemy.OnDeath -= OnEnemyDeath;
             
             enemy.gameObject.SetActive(false);
+
+            _enemies.Remove(enemy);
         }
 
         private void ActionOnGet(Enemy enemy)
         {
-            var spawnPoint = enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)];
+            enemy.Init(slime);
+            
+            var index = Random.Range(0, enemySpawnPositions.Length);
+            var spawnPoint = enemySpawnPositions[index];
             
             enemy.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             
             enemy.OnDeath += OnEnemyDeath;
             
             enemy.gameObject.SetActive(true);
+            
+            _enemies.Add(enemy);
         }
 
         private Enemy CreateFunc()
         {
             var enemy = Instantiate(enemyPrefab, enemyContainer);
-
-            enemy.Init(slime);
 
             return enemy;
         }

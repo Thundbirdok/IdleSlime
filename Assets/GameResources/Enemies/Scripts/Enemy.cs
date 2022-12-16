@@ -13,16 +13,25 @@ namespace GameResources.Enemies.Scripts
         public bool IsDead => health.IsDead;
         public int Health => health.Amount;
 
+        public Vector3 PositionAfterSecond => Vector3.MoveTowards
+        (
+            transform.position,
+            _destinationPoint,
+            speed
+        );
+        
         [SerializeField]
         private Health health;
 
         [SerializeField]
-        private float speed = 0.5f;
+        private float speed = 2.5f;
 
         [SerializeField]
         private float stopMoveDistance = 1.5f;
         
         private Slime _target;
+
+        private Vector3 _destinationPoint;
         
         public void Damage(int value) => health.Damage(value);
 
@@ -40,6 +49,9 @@ namespace GameResources.Enemies.Scripts
         {
             _target = target;
 
+            var targetPosition = _target.transform.position;
+            _destinationPoint = targetPosition + (transform.position - targetPosition).normalized * stopMoveDistance;
+            
             health.HealAllWithoutNotify();
         }
 
@@ -59,7 +71,7 @@ namespace GameResources.Enemies.Scripts
             transform.position = Vector3.MoveTowards
             (
                 transform.position,
-                _target.transform.position,
+                _destinationPoint,
                 speed * Time.fixedDeltaTime
             );
         }
