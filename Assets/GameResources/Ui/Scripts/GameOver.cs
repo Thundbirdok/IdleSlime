@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace GameResources.Ui.Scripts
 {
+    using System;
     using System.Threading.Tasks;
     using DG.Tweening;
     using GameResources.Health.Scripts;
@@ -11,6 +12,9 @@ namespace GameResources.Ui.Scripts
 
     public class GameOver : MonoBehaviour
     {
+        public event Action OnOpen;
+        public event Action OnClose;
+        
         [SerializeField]
         private CanvasGroup group;
 
@@ -83,6 +87,8 @@ namespace GameResources.Ui.Scripts
          
             PauseController.Continue();
             
+            OnClose?.Invoke();
+            
             slime.HealAll();
             slime.AddInvincible(invincibleAfterHealAll);
         }
@@ -100,6 +106,8 @@ namespace GameResources.Ui.Scripts
             
             PauseController.Continue();
             
+            OnClose?.Invoke();
+            
             slime.HealAll();
             slime.AddInvincible(invincibleAfterHealAll);
         }
@@ -112,6 +120,8 @@ namespace GameResources.Ui.Scripts
             }
 
             _isOpened = true;
+            
+            OnOpen?.Invoke();
             
             OpenWithFade();
         }

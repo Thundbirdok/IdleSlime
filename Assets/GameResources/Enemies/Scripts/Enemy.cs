@@ -10,10 +10,15 @@ namespace GameResources.Enemies.Scripts
     public class Enemy : MonoBehaviour, IDamagable
     {
         public event Action<IDamagable> OnDeath;
-        
+        public event Action OnAmountChange;
+
+        public Vector3 Position => transform.position;
+        public Vector3 HealthBarPosition => healthBarPosition.position;
+
         public bool IsDead => health.IsDead;
         public int Health => health.Amount;
-
+        public int MaxHealth => health.MaxAmount;
+        
         public Vector3 PositionAfterSecond => Vector3.MoveTowards
         (
             transform.position,
@@ -24,6 +29,9 @@ namespace GameResources.Enemies.Scripts
         [SerializeField]
         private Health health;
 
+        [SerializeField]
+        private Transform healthBarPosition;
+        
         [SerializeField]
         private float speed = 2.5f;
 
@@ -55,7 +63,8 @@ namespace GameResources.Enemies.Scripts
             health.Init(this);
             
             health.OnDeath += InvokeOnDeath;
-
+            health.OnAmountChange += InvokeOnAmountChange;
+            
             StartAutoAttackCoroutine();
         }
 
@@ -64,7 +73,8 @@ namespace GameResources.Enemies.Scripts
             health.Dispose();
             
             health.OnDeath -= InvokeOnDeath;
-
+            health.OnAmountChange -= InvokeOnAmountChange;
+            
             StopAutoAttackCoroutine();
         }
 
@@ -96,7 +106,8 @@ namespace GameResources.Enemies.Scripts
             _target = target;
 
             var targetPosition = _target.transform.position;
-            _destinationPoint = targetPosition + (transform.position - targetPosition).normalized * stopMoveDistance;
+            var reverseDirection = (transform.position - targetPosition);
+            _destinationPoint = targetPosition + reverseDirection.normalized * stopMoveDistance;
             
             health.HealAllWithoutNotify();
         }
@@ -154,5 +165,6 @@ namespace GameResources.Enemies.Scripts
         private void Attack() => _target.Damage(damage);
 
         private void InvokeOnDeath() => OnDeath?.Invoke(this);
+        private void InvokeOnAmountChange() => OnAmountChange?.Invoke();
     }
 }

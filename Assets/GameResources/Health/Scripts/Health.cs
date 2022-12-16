@@ -8,7 +8,7 @@ namespace GameResources.Health.Scripts
     [Serializable]
     public class Health
     {
-        public event Action OnValueChange;
+        public event Action OnAmountChange;
 
         public event Action OnDeath;
 
@@ -30,7 +30,7 @@ namespace GameResources.Health.Scripts
                     _amount = 0;
                 }
 
-                OnValueChange?.Invoke();
+                OnAmountChange?.Invoke();
                 
                 if (_amount == 0)
                 {
@@ -43,8 +43,8 @@ namespace GameResources.Health.Scripts
 
         public bool IsInvincible => _invincibleSeconds > 0;
 
-        [SerializeField]
-        private int maxHealth = 100;
+        [field: SerializeField]
+        public int MaxAmount { get; private set; } = 100;
 
         private MonoBehaviour _monoBehaviour;
 
@@ -59,7 +59,6 @@ namespace GameResources.Health.Scripts
         public void Init(MonoBehaviour gameObject)
         {
             _monoBehaviour = gameObject;
-            _amount = maxHealth;
         }
 
         public void Dispose()
@@ -69,6 +68,11 @@ namespace GameResources.Health.Scripts
         
         public void Damage(int value)
         {
+            if (IsInvincible)
+            {
+                return;
+            }
+            
             if (value < 0)
             {
                 Debug.LogError("Use Heal Instead");
@@ -91,7 +95,7 @@ namespace GameResources.Health.Scripts
             Amount += value;
         }
 
-        public void HealAll() => Amount = maxHealth;
+        public void HealAll() => Amount = MaxAmount;
 
         public void AddInvincible(float seconds)
         {
@@ -112,7 +116,7 @@ namespace GameResources.Health.Scripts
             _amount = value;
         }
 
-        public void HealAllWithoutNotify() => _amount = maxHealth;
+        public void HealAllWithoutNotify() => _amount = MaxAmount;
 
         private void StartInvincibleCountDownCoroutine()
         {

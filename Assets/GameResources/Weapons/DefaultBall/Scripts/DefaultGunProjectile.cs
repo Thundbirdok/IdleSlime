@@ -16,9 +16,14 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
         [SerializeField]
         private int damage = 10;
+
+        [NonSerialized]
+        private bool _isTriggered;
         
         private void OnEnable()
         {
+            _isTriggered = false;
+            
             pathFollower.OnTarget += Destroy;
         }
 
@@ -33,6 +38,13 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (_isTriggered)
+            {
+                return;
+            }
+
+            _isTriggered = true;
+            
             if (collision.gameObject.TryGetComponent(out IDamagable damagable))
             {
                 damagable.Damage(damage);

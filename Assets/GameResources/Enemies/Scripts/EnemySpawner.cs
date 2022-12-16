@@ -3,15 +3,14 @@ using UnityEngine;
 namespace GameResources.Enemies.Scripts
 {
     using System.Collections;
-    using System.Collections.Generic;
     using GameResources.Health.Scripts;
     using GameResources.Slime.Scripts;
     using UnityEngine.Pool;
 
     public class EnemySpawner : MonoBehaviour
     {
-        private List<Enemy> _enemies = new List<Enemy>();
-        public IReadOnlyList<Enemy> Enemies => _enemies;
+        [SerializeField]
+        private EnemiesHandler enemiesHandler;
         
         [SerializeField]
         private Slime slime;
@@ -70,12 +69,13 @@ namespace GameResources.Enemies.Scripts
             
             enemy.gameObject.SetActive(false);
 
-            _enemies.Remove(enemy);
+            enemiesHandler.Remove(enemy);
         }
 
         private void ActionOnGet(Enemy enemy)
         {
             enemy.Init(slime);
+            enemy.HealAll();
             
             var index = Random.Range(0, enemySpawnPositions.Length);
             var spawnPoint = enemySpawnPositions[index];
@@ -86,7 +86,7 @@ namespace GameResources.Enemies.Scripts
             
             enemy.gameObject.SetActive(true);
             
-            _enemies.Add(enemy);
+            enemiesHandler.Add(enemy);
         }
 
         private Enemy CreateFunc()

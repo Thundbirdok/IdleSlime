@@ -25,7 +25,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         private Transform projectilesContainer;
 
         [SerializeField]
-        private EnemySpawner spawner;
+        private EnemiesHandler enemiesHandler;
 
         private const float ADDITIONAL_HEIGHT_WITH_DISTANCE = 0.2f;
         private const float MIDDLE_1_POINT_DISTANCE = 0.333f;
@@ -150,7 +150,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
             closestEnemy = null;
 
-            foreach (var enemy in spawner.Enemies)
+            foreach (var enemy in enemiesHandler.Enemies)
             {
                 var distance = Vector3.Distance
                 (
