@@ -76,15 +76,9 @@ namespace GameResources.Ui.Scripts
             );
         }
 
-        private void DestroyPool()
-        {
-            _pool = null;
-        }
+        private void DestroyPool() => _pool = null;
 
-        private static void ActionOnDestroy(HealthBar healthBar)
-        {
-            Destroy(healthBar.gameObject);
-        }
+        private static void ActionOnDestroy(HealthBar healthBar) => Destroy(healthBar.gameObject);
 
         private static void ActionOnRelease(HealthBar healthBar)
         {

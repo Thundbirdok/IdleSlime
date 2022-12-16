@@ -8,7 +8,7 @@ namespace GameResources.Slime.Scripts
     public class Slime : MonoBehaviour, IDamagable
     {
         public event Action<IDamagable> OnDeath;
-        public event Action OnAmountChange;
+        public event Action<IDamagable, int> OnAmountChange;
 
         public Vector3 Position => transform.position;
         
@@ -54,6 +54,6 @@ namespace GameResources.Slime.Scripts
 
         private void InvokeOnDeath() => OnDeath?.Invoke(this);
 
-        private void InvokeOnAmountChange() => OnAmountChange?.Invoke();
+        private void InvokeOnAmountChange(int value) => OnAmountChange?.Invoke(this, value);
     }
 }

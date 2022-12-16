@@ -8,7 +8,7 @@ namespace GameResources.Health.Scripts
     [Serializable]
     public class Health
     {
-        public event Action OnAmountChange;
+        public event Action<int> OnAmountChange;
 
         public event Action OnDeath;
 
@@ -23,6 +23,8 @@ namespace GameResources.Health.Scripts
                     return;
                 }
 
+                var previous = _amount;
+                
                 _amount = value;
 
                 if (_amount < 0)
@@ -30,7 +32,7 @@ namespace GameResources.Health.Scripts
                     _amount = 0;
                 }
 
-                OnAmountChange?.Invoke();
+                OnAmountChange?.Invoke(_amount - previous);
                 
                 if (_amount == 0)
                 {
@@ -120,7 +122,7 @@ namespace GameResources.Health.Scripts
 
         private void StartInvincibleCountDownCoroutine()
         {
-            if (_coroutine != null)
+            if (_coroutine == null)
             {
                 _coroutine = _monoBehaviour.StartCoroutine(InvincibleCountdown());
             }

@@ -35,12 +35,13 @@ namespace GameResources.Enemies.Scripts
 
         private void OnEnable()
         {
-            StartSpawnCoroutine();
+            //StartSpawnCoroutine();
+            Spawn();
         }
 
         private void OnDisable()
         {
-            StopSpawnCoroutine();
+            //StopSpawnCoroutine();
             
             _pool.Clear();
         }
@@ -127,6 +128,11 @@ namespace GameResources.Enemies.Scripts
 
         private void Spawn() => _pool.Get();
 
-        private void OnEnemyDeath(IDamagable enemy) => _pool.Release(enemy as Enemy);
+        private void OnEnemyDeath(IDamagable enemy)
+        {
+            _pool.Release(enemy as Enemy);
+            
+            Spawn();
+        }
     }
 }

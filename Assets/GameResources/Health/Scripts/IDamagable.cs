@@ -7,7 +7,7 @@ namespace GameResources.Health.Scripts
     {
         public event Action<IDamagable> OnDeath;
 
-        public event Action OnAmountChange;
+        public event Action<IDamagable, int> OnAmountChange;
         
         public Vector3 Position { get; }
         

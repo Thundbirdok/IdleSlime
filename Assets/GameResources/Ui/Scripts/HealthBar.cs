@@ -38,10 +38,10 @@ namespace GameResources.Ui.Scripts
 
             fill.color = isEnemy ? enemyColor : playerColor;
 
-            SetValue();
+            SetValue(Damagable,0);
         }
 
-        private void SetValue()
+        private void SetValue(IDamagable damagable, int value)
         {
             fill.fillAmount = Mathf.Clamp01((float)Damagable.Health / Damagable.MaxHealth);
         }
