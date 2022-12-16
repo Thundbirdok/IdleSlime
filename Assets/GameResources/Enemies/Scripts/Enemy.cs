@@ -3,8 +3,10 @@ using UnityEngine;
 namespace GameResources.Enemies.Scripts
 {
     using System;
+    using System.Collections;
     using GameResources.Health.Scripts;
     using GameResources.Slime.Scripts;
+    using UnityEngine.Serialization;
 
     public class Enemy : MonoBehaviour, IDamagable
     {
@@ -28,10 +30,20 @@ namespace GameResources.Enemies.Scripts
 
         [SerializeField]
         private float stopMoveDistance = 1.5f;
+
+        [SerializeField]
+        private float attackRate = 12;
+        
+        [SerializeField]
+        private int damage = 10;
         
         private Slime _target;
 
         private Vector3 _destinationPoint;
+
+        private float _distanceToTarget;
+
+        private Coroutine _coroutine;
         
         public void Damage(int value) => health.Damage(value);
 
@@ -39,11 +51,42 @@ namespace GameResources.Enemies.Scripts
 
         public void HealAll() => health.HealAll();
 
-        private void OnEnable() => health.OnDeath += InvokeOnDeath;
+        private void OnEnable()
+        {
+            health.OnDeath += InvokeOnDeath;
 
-        private void OnDisable() => health.OnDeath -= InvokeOnDeath;
+            StartAutoAttackCoroutine();
+        }
 
-        private void FixedUpdate() => Move();
+        private void OnDisable()
+        {
+            health.OnDeath -= InvokeOnDeath;
+
+            StopAutoAttackCoroutine();
+        }
+
+        private void FixedUpdate()
+        {
+            Move();
+            GetDistanceToTarget();
+        }
+
+        private void StartAutoAttackCoroutine()
+        {
+            _coroutine = StartCoroutine(AutoAttack());
+        }
+
+        private void StopAutoAttackCoroutine()
+        {
+            if (_coroutine == null)
+            {
+                return;
+            }
+
+            StopCoroutine(_coroutine);
+
+            _coroutine = null;
+        }
 
         public void Init(Slime target)
         {
@@ -55,15 +98,18 @@ namespace GameResources.Enemies.Scripts
             health.HealAllWithoutNotify();
         }
 
-        private void Move()
+        private void GetDistanceToTarget()
         {
-            var distanceToTarget = Vector3.Distance
+            _distanceToTarget = Vector3.Distance
             (
                 transform.position, 
                 _target.transform.position
             );
-
-            if (distanceToTarget <= stopMoveDistance)
+        }
+        
+        private void Move()
+        {
+            if (_distanceToTarget <= stopMoveDistance)
             {
                 return;
             }
@@ -75,6 +121,34 @@ namespace GameResources.Enemies.Scripts
                 speed * Time.fixedDeltaTime
             );
         }
+
+        private IEnumerator AutoAttack()
+        {
+            var delay = new WaitForSeconds(60 / attackRate);
+            
+            while (enabled)
+            {
+                if (_target == null)
+                {
+                    yield return null;
+
+                    continue;
+                }
+                
+                if (_distanceToTarget > stopMoveDistance)
+                {
+                    yield return null;
+
+                    continue;
+                }
+                
+                Attack();
+
+                yield return delay;
+            }
+        }
+
+        private void Attack() => _target.Damage(damage);
 
         private void InvokeOnDeath() => OnDeath?.Invoke(this);
     }
