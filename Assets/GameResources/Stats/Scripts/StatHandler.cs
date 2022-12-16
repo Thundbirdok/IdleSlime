@@ -1,10 +1,11 @@
 namespace GameResources.Stats.Scripts
 {
     using System;
+    using GameResources.JsonSave;
     using UnityEngine;
 
     [CreateAssetMenu(fileName = "StateHandler", menuName = "Stats/Handler")]
-    public class StatHandler : ScriptableObject
+    public class StatHandler : SavableScriptableObject
     {
         public int NextLevelCost
         {
@@ -40,8 +41,26 @@ namespace GameResources.Stats.Scripts
         [SerializeField]
         private Stat[] levels;
 
+        private string FileName => name + ".json";
+
+        private const string KEY = "Level";
+        
+        private JsonSave _save;
+        
         [NonSerialized]
         private int _currentLevel;
+
+        public override void Load()
+        {
+            _save = new JsonSave(FileName, KEY);
+            
+            _currentLevel = _save.Load();
+        }
+
+        public override void Save()
+        {
+            _save.Save(_currentLevel);
+        }
 
         public void AddLevel(int value)
         {

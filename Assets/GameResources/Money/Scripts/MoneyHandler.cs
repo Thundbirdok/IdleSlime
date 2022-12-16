@@ -1,10 +1,11 @@
 namespace GameResources.Money.Scripts
 {
     using System;
+    using GameResources.JsonSave;
     using UnityEngine;
 
     [CreateAssetMenu(fileName = "MoneyHandler", menuName = "Economics/MoneyHandler")]
-    public class MoneyHandler : ScriptableObject
+    public class MoneyHandler : SavableScriptableObject
     {
         public event Action<int> OnAmountChange;
 
@@ -12,6 +13,13 @@ namespace GameResources.Money.Scripts
         
         [NonSerialized]
         private int _amount;
+
+        private JsonSave _save;
+
+        private const string FILE_NAME = "EconomyResources.json";
+
+        private const string KEY = "Money";
+
         public int Amount
         {
             get => _amount;
@@ -36,10 +44,16 @@ namespace GameResources.Money.Scripts
             }
         }
 
-        public void Add(int value)
+        public override void Load()
         {
-            Amount += value;
+            _save = new JsonSave(FILE_NAME, KEY);
+            
+            Amount = _save.Load();
         }
+
+        public override void Save() => _save.Save(_amount);
+
+        public void Add(int value) => Amount += value;
 
         public bool Spend(int value)
         {

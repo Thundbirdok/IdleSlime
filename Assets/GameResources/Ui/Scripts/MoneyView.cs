@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace GameResources.Ui.Scripts
 {
-    using GameResources.Money;
     using GameResources.Money.Scripts;
     using TMPro;
 
@@ -16,6 +15,8 @@ namespace GameResources.Ui.Scripts
         
         private void OnEnable()
         {
+            SetText(0);
+            
             handler.OnAmountChange += SetText;
         }
         
