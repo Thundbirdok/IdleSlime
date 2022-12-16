@@ -12,6 +12,8 @@ namespace GameResources.Health.Scripts
 
         public event Action OnDeath;
 
+        [NonSerialized]
+        private int _amount;
         public int Amount
         {
             get => _amount;
@@ -51,9 +53,6 @@ namespace GameResources.Health.Scripts
         private MonoBehaviour _monoBehaviour;
 
         private Coroutine _coroutine;
-        
-        [NonSerialized]
-        private int _amount;
 
         [NonSerialized]
         private float _invincibleSeconds;

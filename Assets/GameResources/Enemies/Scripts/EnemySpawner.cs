@@ -4,6 +4,8 @@ namespace GameResources.Enemies.Scripts
 {
     using System.Collections;
     using GameResources.Health.Scripts;
+    using GameResources.Money;
+    using GameResources.Money.Scripts;
     using GameResources.Slime.Scripts;
     using UnityEngine.Pool;
 
@@ -23,6 +25,12 @@ namespace GameResources.Enemies.Scripts
 
         [SerializeField]
         private float spawnRate = 6;
+
+        [SerializeField]
+        private MoneyHandler moneyHandler;
+
+        [SerializeField]
+        private int deathCost = 10;
         
         [SerializeField]
         private Transform[] enemySpawnPositions;
@@ -131,6 +139,8 @@ namespace GameResources.Enemies.Scripts
         private void OnEnemyDeath(IDamagable enemy)
         {
             _pool.Release(enemy as Enemy);
+            
+            moneyHandler.Add(deathCost);
             
             Spawn();
         }
