@@ -22,10 +22,22 @@ namespace GameResources.Slime.Scripts
 
         public void HealAll() => health.HealAll();
 
-        private void OnEnable() => health.OnDeath += InvokeOnDeath;
-
-        private void OnDisable() => health.OnDeath -= InvokeOnDeath;
+        public void AddInvincible(float seconds) => health.AddInvincible(seconds);
         
+        private void OnEnable()
+        {
+            health.Init(this);
+            
+            health.OnDeath += InvokeOnDeath;
+        }
+
+        private void OnDisable()
+        {
+            health.Dispose();
+            
+            health.OnDeath -= InvokeOnDeath;
+        }
+
         private void InvokeOnDeath() => OnDeath?.Invoke(this);
     }
 }

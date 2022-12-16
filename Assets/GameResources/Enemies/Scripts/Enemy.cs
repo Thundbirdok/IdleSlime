@@ -6,7 +6,6 @@ namespace GameResources.Enemies.Scripts
     using System.Collections;
     using GameResources.Health.Scripts;
     using GameResources.Slime.Scripts;
-    using UnityEngine.Serialization;
 
     public class Enemy : MonoBehaviour, IDamagable
     {
@@ -53,6 +52,8 @@ namespace GameResources.Enemies.Scripts
 
         private void OnEnable()
         {
+            health.Init(this);
+            
             health.OnDeath += InvokeOnDeath;
 
             StartAutoAttackCoroutine();
@@ -60,6 +61,8 @@ namespace GameResources.Enemies.Scripts
 
         private void OnDisable()
         {
+            health.Dispose();
+            
             health.OnDeath -= InvokeOnDeath;
 
             StopAutoAttackCoroutine();

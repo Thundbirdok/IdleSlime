@@ -133,7 +133,7 @@ MonoBehaviour:
   pathFollower:
     speed: 12
     isSimulateGravity: 1
-  damage: 20
+  damage: 10
 --- !u!135 &2892020211518912453
 SphereCollider:
   m_ObjectHideFlags: 0
