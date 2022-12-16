@@ -4,6 +4,7 @@ namespace GameResources.Health.Scripts
 {
     using System;
     using System.Collections;
+    using GameResources.Stats.Scripts;
 
     [Serializable]
     public class Health
@@ -47,9 +48,11 @@ namespace GameResources.Health.Scripts
 
         public bool IsInvincible => _invincibleSeconds > 0;
 
-        [field: SerializeField]
-        public int MaxAmount { get; private set; } = 100;
+        [SerializeField]
+        public StatHandler maxAmount;
 
+        public int MaxAmount => maxAmount.Value;
+        
         private MonoBehaviour _monoBehaviour;
 
         private Coroutine _coroutine;

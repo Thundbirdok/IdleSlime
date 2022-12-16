@@ -4,6 +4,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 {
     using System.Collections;
     using GameResources.Enemies.Scripts;
+    using GameResources.Stats.Scripts;
     using PathCreation;
     using UnityEngine.Pool;
 
@@ -13,7 +14,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         private Collider ownerCollider;
         
         [SerializeField]
-        private float fireRate = 12;
+        private StatHandler fireRate;
 
         [SerializeField] 
         private DefaultGunProjectile projectilePrefab;
@@ -118,7 +119,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
 
         private IEnumerator AutoFire()
         {
-            var delay = new WaitForSeconds(60 / fireRate);
+            var delay = new WaitForSeconds(60f / fireRate.Value);
             
             while (enabled)
             {

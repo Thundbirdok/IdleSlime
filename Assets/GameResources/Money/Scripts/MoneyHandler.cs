@@ -41,16 +41,18 @@ namespace GameResources.Money.Scripts
             Amount += value;
         }
 
-        public void Spend(int value)
+        public bool Spend(int value)
         {
             if (Amount < value)
             {
                 OnNotEnough?.Invoke();
                 
-                return;
+                return false;
             }
             
             Amount -= value;
+
+            return true;
         }
     }
 }

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health:
-    <MaxAmount>k__BackingField: 100
+    maxAmount: {fileID: 11400000, guid: a63e89c2134ffe444b8c0a6938142956, type: 2}
   healthBarPosition: {fileID: 6781766081399345012}
   speed: 3.5
   stopMoveDistance: 1.5

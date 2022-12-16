@@ -5,6 +5,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
     using System;
     using GameResources.Health.Scripts;
     using GameResources.Movement;
+    using GameResources.Stats.Scripts;
     using PathCreation;
 
     public class DefaultGunProjectile : MonoBehaviour
@@ -15,7 +16,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         private PathFollower pathFollower;
 
         [SerializeField]
-        private int damage = 10;
+        private StatHandler damage;
 
         [NonSerialized]
         private bool _isTriggered;
@@ -47,7 +48,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
             
             if (collision.gameObject.TryGetComponent(out IDamagable damagable))
             {
-                damagable.Damage(damage);
+                damagable.Damage(damage.Value);
             }
             
             Destroy();
