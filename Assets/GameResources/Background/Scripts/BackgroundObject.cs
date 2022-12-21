@@ -4,35 +4,33 @@ namespace GameResources.Background.Scripts
 {
     public class BackgroundObject : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject[] models;
-
-        private GameObject _model;
+        private BackgroundObjectModelsPool _backgroundObjectModelsPool;
         
-        private void OnEnable()
+        private GameObject _model;
+
+        private int _index;
+        
+        public void Init(BackgroundObjectModelsPool backgroundObjectModelsPool)
         {
-            Spawn();
+            _backgroundObjectModelsPool = backgroundObjectModelsPool;
         }
 
-        private void OnDisable()
+        public void SpawnModel()
         {
-            Despawn();
-        }
+            _model = _backgroundObjectModelsPool.GetRandom(out _index);
 
-        private void Spawn()
-        {
-            _model = Instantiate(models[Random.Range(0, models.Length)], transform);
-        }
+            _model.transform.SetParent(transform);
 
-        private void Despawn()
-        {
-            if (_model == null)
-            {
-                return;
-            }
+            var rotation = Quaternion.Euler(0, Random.Range(-180, 180), 0);
             
-            Destroy(_model);
-
+            _model.transform.SetLocalPositionAndRotation(Vector3.zero, rotation);
+            
+        }
+        
+        public void DespawnModel()
+        {
+            _backgroundObjectModelsPool.Release(_index, _model);
+            _index = -1;
             _model = null;
         }
     }

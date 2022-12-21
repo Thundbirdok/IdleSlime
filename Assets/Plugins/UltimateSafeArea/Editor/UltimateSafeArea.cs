@@ -49,7 +49,7 @@ namespace Frosttale_Studios_Assets
         [MenuItem("Tools/UltimateSafeArea/Apply SafeArea in Project")]
         static void ApplySafeArea_InProject()
         {
-            //Get all existing scenes
+            //GetRandom all existing scenes
             int sceneCount = SceneManager.sceneCountInBuildSettings;
             string[] scenes = new string[sceneCount];
 

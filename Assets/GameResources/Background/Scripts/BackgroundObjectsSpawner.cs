@@ -2,91 +2,141 @@ using UnityEngine;
 
 namespace GameResources.Background.Scripts
 {
-    using System.Collections.Generic;
-    using UnityEngine.Serialization;
+    using System;
+    using UnityEngine.Pool;
+    using Object = UnityEngine.Object;
 
-    public class BackgroundObjectsSpawner : MonoBehaviour
+    [Serializable]
+    public class BackgroundObjectsSpawner
     {
-        [SerializeField]
-        private BackgroundObject backgroundObject;
-
-        [SerializeField]
-        private Transform startPoint;
+        public event Action OnInited;
+        
+        public bool IsInited { get; private set; }
         
         [SerializeField]
-        private Transform endPoint;
-
-        [SerializeField]
-        private float speed;
+        private BackgroundObjectModelsPool backgroundObjectModelsPool;
         
         [SerializeField]
-        private float distanceBetweenObjects = 2;
+        private BackgroundObject backgroundObjectPrefab;
 
         [SerializeField]
-        private List<BackgroundObject> objects = new List<BackgroundObject>();
+        private Transform objectsContainer;
 
-        private void Update()
+        [NonSerialized]
+        private BackgroundObjectsHandler _objectsHandler;
+        
+        private ObjectPool<BackgroundObject> _pool;
+
+        private Vector3 _startPoint;
+
+        private Vector3 _endPoint;
+
+        private float _distanceBetweenObjects = 2;
+
+        public void Construct(BackgroundObjectsHandler objectHandler, Vector3 startPoint, Vector3 endPoint, float distanceBetweenObjects)
         {
-            Move();
-
-            var lastObjectDistance = float.MaxValue;
-
-            if (objects.Count > 0)
-            {
-                lastObjectDistance = startPoint.position.x - objects[^1].transform.position.x;
-            }
-
-            if (lastObjectDistance > distanceBetweenObjects)
-            {
-                Spawn();
-            }
-
-            var firstObjectDistance = 1f;
-
-            if (objects.Count > 0) 
-            {
-                firstObjectDistance = objects[0].transform.position.x - endPoint.position.x;
-            }
+            _objectsHandler = objectHandler;
             
-            if (firstObjectDistance <= 0)
+            _startPoint = startPoint;
+            _endPoint = endPoint;
+
+            _distanceBetweenObjects = distanceBetweenObjects;
+            
+            backgroundObjectModelsPool.Init();
+            
+            InitPool();
+
+            IsInited = true;
+            OnInited?.Invoke();
+        }
+
+        public void Dispose()
+        {
+            DestroyObjects();
+
+            IsInited = false;
+        }
+
+        public void Spawn() => _pool.Get();
+
+        public void Despawn() => _pool.Release(_objectsHandler.First());
+
+        public void FirstPopulate()
+        {
+            var currentPoint = _endPoint;
+            
+            while (currentPoint.x - _startPoint.x < 0)
             {
-                Despawn();
+                var obj = _pool.Get();
+
+                obj.transform.position = currentPoint;
+
+                currentPoint.x += _distanceBetweenObjects;
             }
         }
 
-        private void Move()
+        private void InitPool()
         {
-            foreach (var obj in objects)
-            {
-                obj.transform.position = Vector3.MoveTowards
+            var numberOfPoints =
+                Mathf.FloorToInt
                 (
-                    obj.transform.position, 
-                    endPoint.position, 
-                    speed * Time.fixedDeltaTime * Time.timeScale
+                    (_startPoint.x - _endPoint.x) / _distanceBetweenObjects
                 );
-            }
-        }
-        
-        private void Spawn()
-        {
-            var obj = Instantiate
+            
+            _pool = new ObjectPool<BackgroundObject>
             (
-                backgroundObject,
-                startPoint.position,
-                Quaternion.Euler(0, Random.Range(-180, 180), 0),
-                transform
+                CreateFunc,
+                ActionOnGet,
+                ActionOnRelease,
+                ActionOnDestroy,
+                false,
+                numberOfPoints,
+                numberOfPoints + 2
+            );
+        }
+
+        private void DestroyObjects()
+        {
+            _pool.Clear();
+            
+            _pool = null;
+
+            _objectsHandler.Clear();
+        }
+
+        private BackgroundObject CreateFunc()
+        {
+            var obj = Object.Instantiate
+            (
+                backgroundObjectPrefab,
+                objectsContainer
             );
             
-            objects.Add(obj);
+            obj.Init(backgroundObjectModelsPool);
+
+            return obj;
         }
 
-        private void Despawn()
+        private void ActionOnGet(BackgroundObject obj)
         {
-            var obj = objects[0];
+            _objectsHandler.Add(obj);
+            
+            obj.SpawnModel();
 
-            objects.RemoveAt(0);
+            obj.transform.position = _startPoint;
 
-            Destroy(obj.gameObject);
+            obj.gameObject.SetActive(true);
         }
+
+        private void ActionOnRelease(BackgroundObject obj)
+        {
+            _objectsHandler.Remove(obj);
+
+            obj.DespawnModel();
+            
+            obj.gameObject.SetActive(false);
+        }
+
+        private static void ActionOnDestroy(BackgroundObject obj) => Object.Destroy(obj.gameObject);
     }
 }

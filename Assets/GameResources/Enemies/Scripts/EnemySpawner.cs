@@ -43,14 +43,11 @@ namespace GameResources.Enemies.Scripts
 
         private void OnEnable()
         {
-            //StartSpawnCoroutine();
             Spawn();
         }
 
         private void OnDisable()
         {
-            //StopSpawnCoroutine();
-            
             _pool.Clear();
         }
 
