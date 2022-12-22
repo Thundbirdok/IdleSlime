@@ -3,7 +3,6 @@ using UnityEngine;
 namespace GameResources.Ui.Scripts
 {
     using System.Collections.Generic;
-    using System.Linq;
     using GameResources.Enemies.Scripts;
     using GameResources.Health.Scripts;
     using GameResources.Slime.Scripts;
@@ -50,10 +49,7 @@ namespace GameResources.Ui.Scripts
 
         private void OnDisable() => Unsubscribe();
 
-        private void OnDestroy()
-        {
-            DestroyPool();
-        }
+        private void OnDestroy() => DestroyPool();
 
         private void InitPool()
         {
@@ -67,7 +63,22 @@ namespace GameResources.Ui.Scripts
             );
         }
 
-        private void DestroyPool() => _pool = null;
+        private void DestroyPool()
+        {
+            _pool.Clear();
+
+            foreach (var view in _views)
+            {
+                if (view != null && view.gameObject != null)
+                {
+                    Destroy(view.gameObject);   
+                }
+            }
+            
+            _views.Clear();
+
+            _pool = null;
+        }
 
         private static void ActionOnDestroy(DamageNumber number)
         {
