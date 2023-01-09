@@ -12,13 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00f23ac665369748b51948e06bbe88d, type: 3}
   m_Name: FireRate
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: FireRate
-  levels:
-  - Value: 60
-    Cost: 0
-  - Value: 120
-    Cost: 10
-  - Value: 240
-    Cost: 50
-  - Value: 480
-    Cost: 100
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  statHandler:
+    <Description>k__BackingField: Fire Rate
+    name: Fire Rate
+    levels:
+    - <Value>k__BackingField: 12
+      <Cost>k__BackingField: 0
+    - <Value>k__BackingField: 24
+      <Cost>k__BackingField: 50

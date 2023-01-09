@@ -22,7 +22,7 @@ namespace GameResources.Slime.Scripts
         
         [SerializeField]
         private Health health;
-        
+
         [SerializeField]
         private Transform healthBarPosition;
         

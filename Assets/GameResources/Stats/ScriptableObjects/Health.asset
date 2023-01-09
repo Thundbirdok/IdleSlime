@@ -12,13 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00f23ac665369748b51948e06bbe88d, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: Health
-  levels:
-  - Value: 100
-    Cost: 0
-  - Value: 200
-    Cost: 10
-  - Value: 400
-    Cost: 50
-  - Value: 800
-    Cost: 100
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  statHandler:
+    <Description>k__BackingField: MaximumHealth
+    name: MaximumHealth
+    levels:
+    - <Value>k__BackingField: 100
+      <Cost>k__BackingField: 0
+    - <Value>k__BackingField: 200
+      <Cost>k__BackingField: 50

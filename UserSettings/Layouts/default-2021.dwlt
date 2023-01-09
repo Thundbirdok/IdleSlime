@@ -8,6 +8,30 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PixelRect:
+    serializedVersion: 2
+    x: 540
+    y: 229
+    width: 645
+    height: 567
+  m_ShowMode: 0
+  m_Title: Test Runner
+  m_RootView: {fileID: 4}
+  m_MinSize: {x: 100, y: 121}
+  m_MaxSize: {x: 4000, y: 4021}
+  m_Maximized: 0
+--- !u!114 &2
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -20,11 +44,61 @@ MonoBehaviour:
     height: 997
   m_ShowMode: 4
   m_Title: Console
-  m_RootView: {fileID: 9}
+  m_RootView: {fileID: 12}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
---- !u!114 &2
+--- !u!114 &3
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: TestRunnerWindow
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 645
+    height: 567
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 18}
+  m_Panes:
+  - {fileID: 18}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &4
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 3}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 645
+    height: 567
+  m_MinSize: {x: 100, y: 121}
+  m_MaxSize: {x: 4000, y: 4021}
+  vertical: 0
+  controlID: 4850
+--- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,19 +113,19 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 881
+    x: 676
     y: 0
-    width: 609
+    width: 467
     height: 380
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 24}
+  m_ActualView: {fileID: 28}
   m_Panes:
-  - {fileID: 24}
-  - {fileID: 15}
+  - {fileID: 28}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &3
+--- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,19 +138,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 8}
-  - {fileID: 2}
+  - {fileID: 11}
+  - {fileID: 5}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 567
-    width: 1490
+    width: 1143
     height: 380
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 81
---- !u!114 &4
+  controlID: 59
+--- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,18 +165,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1007
+    x: 815
     y: 0
-    width: 483
+    width: 328
     height: 567
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 23}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 27}
   m_Panes:
-  - {fileID: 23}
+  - {fileID: 27}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &5
+--- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,8 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 12}
-  - {fileID: 6}
+  - {fileID: 15}
+  - {fileID: 9}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -126,8 +200,8 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 19
---- !u!114 &6
+  controlID: 176
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,20 +216,20 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1490
+    x: 1143
     y: 0
-    width: 430
+    width: 777
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 24}
   m_Panes:
+  - {fileID: 24}
+  - {fileID: 21}
   - {fileID: 20}
-  - {fileID: 17}
-  - {fileID: 16}
   m_Selected: 0
-  m_LastSelected: 1
---- !u!114 &7
+  m_LastSelected: 2
+--- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,16 +246,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 434
+    width: 331
     height: 567
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 25}
   m_Panes:
-  - {fileID: 21}
+  - {fileID: 25}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &8
+--- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,16 +272,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 881
+    width: 676
     height: 380
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 23}
   m_Panes:
-  - {fileID: 19}
+  - {fileID: 23}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &9
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,9 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 10}
-  - {fileID: 5}
-  - {fileID: 11}
+  - {fileID: 13}
+  - {fileID: 8}
+  - {fileID: 14}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -235,7 +309,7 @@ MonoBehaviour:
   m_TopViewHeight: 30
   m_UseBottomView: 1
   m_BottomViewHeight: 20
---- !u!114 &10
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,7 +331,7 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
---- !u!114 &11
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,7 +352,7 @@ MonoBehaviour:
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
---- !u!114 &12
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,19 +365,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 13}
-  - {fileID: 3}
+  - {fileID: 16}
+  - {fileID: 6}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1490
+    width: 1143
     height: 947
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 143
---- !u!114 &13
+  controlID: 45
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,20 +390,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
+  - {fileID: 10}
+  - {fileID: 17}
   - {fileID: 7}
-  - {fileID: 14}
-  - {fileID: 4}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1490
+    width: 1143
     height: 567
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 144
---- !u!114 &14
+  controlID: 46
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,19 +418,543 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 434
+    x: 331
     y: 0
-    width: 573
+    width: 484
     height: 567
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 22}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 26}
   m_Panes:
+  - {fileID: 26}
   - {fileID: 22}
-  - {fileID: 18}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &15
+--- !u!114 &18
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Test Runner
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 540
+    y: 229
+    width: 645
+    height: 546
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_Spl:
+    ID: 4880
+    splitterInitialOffset: 0
+    currentActiveSplitter: -1
+    realSizes:
+    - 357
+    - 119
+    relativeSizes:
+    - 0.75
+    - 0.25
+    minSizes:
+    - 32
+    - 32
+    maxSizes:
+    - 0
+    - 0
+    lastTotalSize: 476
+    splitSize: 6
+    xOffset: 0
+    m_Version: 1
+    oldRealSizes: 
+    oldMinSizes: 
+    oldMaxSizes: 
+    oldSplitSize: 0
+  m_TestTypeToolbarIndex: 1
+  m_PlayModeTestListGUI:
+    m_Window: {fileID: 18}
+    m_NewResultList:
+    - id: 1144
+      uniqueId: '[IdleSlime][suite]'
+      name: IdleSlime
+      fullName: IdleSlime
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e169519755def7c4c51cfcdc0f38c3df0130baead40868f2c1ff281affffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+  m_EditModeTestListGUI:
+    m_Window: {fileID: 18}
+    m_NewResultList:
+    - id: 1128
+      uniqueId: '[IdleSlime][suite]'
+      name: IdleSlime
+      fullName: IdleSlime
+      resultStatus: 1
+      duration: 0.1754995
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1135
+      uniqueId: '[Health.Editor.Tests.dll][suite]'
+      name: Health.Editor.Tests.dll
+      fullName: D:/Projects/IdleSlime/Library/ScriptAssemblies/Health.Editor.Tests.dll
+      resultStatus: 1
+      duration: 0.0670413
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1128
+      parentUniqueId: '[IdleSlime][suite]'
+    - id: 1136
+      uniqueId: Health.Editor.Tests.dll/[GameResources][suite]
+      name: GameResources
+      fullName: GameResources
+      resultStatus: 1
+      duration: 0.0658551
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1135
+      parentUniqueId: '[Health.Editor.Tests.dll][suite]'
+    - id: 1137
+      uniqueId: Health.Editor.Tests.dll/GameResources/[Health][suite]
+      name: Health
+      fullName: GameResources.Health
+      resultStatus: 1
+      duration: 0.0655147
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1136
+      parentUniqueId: Health.Editor.Tests.dll/[GameResources][suite]
+    - id: 1138
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/[Editor][suite]
+      name: Editor
+      fullName: GameResources.Health.Editor
+      resultStatus: 1
+      duration: 0.0620154
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1137
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/[Health][suite]
+    - id: 1139
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/[Health.Editor.Tests][GameResources.Health.Editor.Tests][suite]
+      name: Tests
+      fullName: GameResources.Health.Editor.Tests
+      resultStatus: 1
+      duration: 0.057916
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1138
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/[Editor][suite]
+    - id: 1129
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests][suite]
+      name: HealthTests
+      fullName: GameResources.Health.Editor.Tests.HealthTests
+      resultStatus: 1
+      duration: 0.0519786
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1139
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/[Health.Editor.Tests][GameResources.Health.Editor.Tests][suite]
+    - id: 1131
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/HealthTests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests.WhenAddingHealth_AndHealthIsMax_ThenHealthShouldBeEqualMax]
+      name: WhenAddingHealth_AndHealthIsMax_ThenHealthShouldBeEqualMax
+      fullName: GameResources.Health.Editor.Tests.HealthTests.WhenAddingHealth_AndHealthIsMax_ThenHealthShouldBeEqualMax
+      resultStatus: 1
+      duration: 0.027755
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1129
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests][suite]
+    - id: 1130
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/HealthTests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests.WhenAddingHealth_AndHealthZero_ThenHealthShouldBeEqualToAdded]
+      name: WhenAddingHealth_AndHealthZero_ThenHealthShouldBeEqualToAdded
+      fullName: GameResources.Health.Editor.Tests.HealthTests.WhenAddingHealth_AndHealthZero_ThenHealthShouldBeEqualToAdded
+      resultStatus: 1
+      duration: 0.0004191
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1129
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests][suite]
+    - id: 1132
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/HealthTests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests.WhenDamage_AndHealthWasEqualToDamage_ThenHealthShouldBeZero]
+      name: WhenDamage_AndHealthWasEqualToDamage_ThenHealthShouldBeZero
+      fullName: GameResources.Health.Editor.Tests.HealthTests.WhenDamage_AndHealthWasEqualToDamage_ThenHealthShouldBeZero
+      resultStatus: 1
+      duration: 0.0004845
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1129
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests][suite]
+    - id: 1134
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/HealthTests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests.WhenDamage_AndHealthWasEqualToDamage_ThenInvokeDeathAction]
+      name: WhenDamage_AndHealthWasEqualToDamage_ThenInvokeDeathAction
+      fullName: GameResources.Health.Editor.Tests.HealthTests.WhenDamage_AndHealthWasEqualToDamage_ThenInvokeDeathAction
+      resultStatus: 1
+      duration: 0.0007874
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1129
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests][suite]
+    - id: 1133
+      uniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/HealthTests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests.WhenDamage_AndHealthWasLessThanDamage_ThenHealthShouldBeZero]
+      name: WhenDamage_AndHealthWasLessThanDamage_ThenHealthShouldBeZero
+      fullName: GameResources.Health.Editor.Tests.HealthTests.WhenDamage_AndHealthWasLessThanDamage_ThenHealthShouldBeZero
+      resultStatus: 1
+      duration: 0.0003387
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1129
+      parentUniqueId: Health.Editor.Tests.dll/GameResources/Health/Editor/Tests/[Health.Editor.Tests][GameResources.Health.Editor.Tests.HealthTests][suite]
+    - id: 1016
+      uniqueId: '[Stats.Editor.Tests.dll][suite]'
+      name: Stats.Editor.Tests.dll
+      fullName: D:/Projects/IdleSlime/Library/ScriptAssemblies/Stats.Editor.Tests.dll
+      resultStatus: 1
+      duration: 0.0885694
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1002
+      parentUniqueId: '[IdleSlime][suite]'
+    - id: 1017
+      uniqueId: Stats.Editor.Tests.dll/[GameResources][suite]
+      name: GameResources
+      fullName: GameResources
+      resultStatus: 1
+      duration: 0.0874248
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1016
+      parentUniqueId: '[Stats.Editor.Tests.dll][suite]'
+    - id: 1018
+      uniqueId: Stats.Editor.Tests.dll/GameResources/[Stats][suite]
+      name: Stats
+      fullName: GameResources.Stats
+      resultStatus: 1
+      duration: 0.0868138
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1017
+      parentUniqueId: Stats.Editor.Tests.dll/[GameResources][suite]
+    - id: 1019
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/[Editor][suite]
+      name: Editor
+      fullName: GameResources.Stats.Editor
+      resultStatus: 1
+      duration: 0.081994
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1018
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/[Stats][suite]
+    - id: 1020
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests][suite]
+      name: Tests
+      fullName: GameResources.Stats.Editor.Tests
+      resultStatus: 1
+      duration: 0.0776595
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1019
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/[Editor][suite]
+    - id: 1014
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests][suite]
+      name: StatsHandlerTests
+      fullName: GameResources.Stats.Editor.Tests.StatsHandlerTests
+      resultStatus: 1
+      duration: 0.0686515
+      messages: 
+      output: 'You are trying to create a MonoBehaviour using the ''new'' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1020
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests][suite]
+    - id: 1013
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/StatsHandlerTests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenAddLevel_AndLevelWasZero_ThenLevelShouldBeOne]
+      name: WhenAddLevel_AndLevelWasZero_ThenLevelShouldBeOne
+      fullName: GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenAddLevel_AndLevelWasZero_ThenLevelShouldBeOne
+      resultStatus: 1
+      duration: 0.0009257
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests][suite]
+    - id: 1016
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/StatsHandlerTests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenAddLevel_AndLevelWasZero_ThenNextCostShouldBeEqualToLevelTwoCost]
+      name: WhenAddLevel_AndLevelWasZero_ThenNextCostShouldBeEqualToLevelTwoCost
+      fullName: GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenAddLevel_AndLevelWasZero_ThenNextCostShouldBeEqualToLevelTwoCost
+      resultStatus: 1
+      duration: 0.0006347
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests][suite]
+    - id: 1014
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/StatsHandlerTests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenAddLevel_AndLevelWasZero_ThenValueShouldBeEqualToLevelOneValue]
+      name: WhenAddLevel_AndLevelWasZero_ThenValueShouldBeEqualToLevelOneValue
+      fullName: GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenAddLevel_AndLevelWasZero_ThenValueShouldBeEqualToLevelOneValue
+      resultStatus: 1
+      duration: 0.0003801
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests][suite]
+    - id: 1017
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/StatsHandlerTests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenInit_AndLevelWasZero_ThenNextCostShouldBeEqualToLevelOneCost]
+      name: WhenInit_AndLevelWasZero_ThenNextCostShouldBeEqualToLevelOneCost
+      fullName: GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenInit_AndLevelWasZero_ThenNextCostShouldBeEqualToLevelOneCost
+      resultStatus: 1
+      duration: 0.0002778
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests][suite]
+    - id: 1015
+      uniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/StatsHandlerTests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenInit_AndLevelWasZero_ThenValueShouldBeEqualToLevelZeroValue]
+      name: WhenInit_AndLevelWasZero_ThenValueShouldBeEqualToLevelZeroValue
+      fullName: GameResources.Stats.Editor.Tests.StatsHandlerTests.WhenInit_AndLevelWasZero_ThenValueShouldBeEqualToLevelZeroValue
+      resultStatus: 1
+      duration: 0.0326824
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Stats.Editor.Tests.dll/GameResources/Stats/Editor/Tests/[Stats.Editor.Tests][GameResources.Stats.Editor.Tests.StatsHandlerTests][suite]
+    m_ResultText: WhenInit_AndLevelWasZero_ThenValueShouldBeEqualToLevelZeroValue
+      (0,033s)
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 15}
+      m_SelectedIDs: 0aeda9e8
+      m_LastClickedID: -391516918
+      m_ExpandedIDs: e16951978e0750be55def7c4c7c4a5c7c51cfcdc0f38c3df0130baea79859cecd40868f2949bcf13c1ff281ac1f81347342a6a72ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,10 +974,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 651
-    y: 594
-    width: 709
-    height: 405
+    x: 676
+    y: 640
+    width: 465
+    height: 359
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -425,7 +1023,7 @@ MonoBehaviour:
             scrollPos: {x: 0, y: 0}
             m_SelectedIDs: f3000000
             m_LastClickedID: 243
-            m_ExpandedIDs: 040000003a000000
+            m_ExpandedIDs: 04000000
             m_RenameOverlay:
               m_UserAcceptedRename: 0
               m_Name: 
@@ -1371,7 +1969,7 @@ MonoBehaviour:
       data:
         m_SortAscending: 0
         m_SortedColumn: -1
---- !u!114 &16
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1391,9 +1989,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1290
+    x: 1143
     y: 73
-    width: 629
+    width: 776
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1426,7 +2024,7 @@ MonoBehaviour:
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
---- !u!114 &17
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1446,9 +2044,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1290
+    x: 1143
     y: 73
-    width: 629
+    width: 776
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1476,7 +2074,7 @@ MonoBehaviour:
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
---- !u!114 &18
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1496,15 +2094,15 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 316
+    x: 331
     y: 73
-    width: 587
-    height: 540
+    width: 482
+    height: 546
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &19
+--- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1526,7 +2124,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 640
-    width: 880
+    width: 675
     height: 359
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1545,22 +2143,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/GameResources/Ui/Prefabs
+    - Assets/GameResources/Stats/Editor/Tests
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/GameResources/Ui/Prefabs
+  - Assets/GameResources/Stats/Editor/Tests
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\IdleSlime
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 9c900000
-    m_LastClickedID: 37020
-    m_ExpandedIDs: 00000000c26d0000c86d0000d06d0000d66d0000ea6d0000ec6d0000708b00005490000000ca9a3b
+    scrollPos: {x: 0, y: 29}
+    m_SelectedIDs: 8e880000
+    m_LastClickedID: 34958
+    m_ExpandedIDs: 000000005c71000066710000a6710000ae710000268600008a88000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1588,7 +2186,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c26d0000
+    m_ExpandedIDs: 000000005c7100005e710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1632,7 +2230,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 8}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1644,7 +2242,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &20
+--- !u!114 &24
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1664,9 +2262,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1490
+    x: 1143
     y: 73
-    width: 429
+    width: 776
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1685,7 +2283,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &21
+--- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1707,7 +2305,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 433
+    width: 330
     height: 546
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1716,25 +2314,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 886a0000
+      m_SelectedIDs: 9a880000
       m_LastClickedID: 0
-      m_ExpandedIDs: be9effff2efbffffe6680000f6680000fa6800001a6900004e690000706900008c6900009a690000ba690000e2690000106a0000
+      m_ExpandedIDs: 06a5ffffbaa6ffff6ea7ffffeaa8ffff04abffff82acffffa4adffffe0afffff1cb2ffff46b4ffff20b5ffffaab5ffff34b6ffffbec7ffffeedbffff32ddffffc4ddffff18dfffffa8f7ffffcaf7ffff2ef9ffffb0f9ffff30fbffff4c750000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: SpawnPoint
-        m_OriginalName: SpawnPoint
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 26958
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 7}
+        m_ClientGUIView: {fileID: 10}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1742,7 +2340,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
---- !u!114 &22
+--- !u!114 &26
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1762,9 +2360,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 434
+    x: 331
     y: 73
-    width: 571
+    width: 482
     height: 546
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2000,9 +2598,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.2051682, y: 13.207507, z: -12.878043}
+    m_Target: {x: -3.443088, y: 53.43163, z: 13.14259}
     speed: 2
-    m_Value: {x: -4.2051682, y: 13.207507, z: -12.878043}
+    m_Value: {x: -3.443088, y: 53.43163, z: 13.14259}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -2049,9 +2647,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.5512122, y: 0.0042432905, z: -0.0028260606, w: -0.83437663}
+    m_Target: {x: -0.19260353, y: -0.0008889362, z: 0.00015373818, w: -0.9812991}
     speed: 2
-    m_Value: {x: -0.5511998, y: 0.004243195, z: -0.002825997, w: -0.83435786}
+    m_Value: {x: -0.1925992, y: -0.0008889163, z: 0.00015373473, w: -0.9812771}
   m_Size:
     m_Target: 34.10755
     speed: 2
@@ -2080,7 +2678,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &23
+--- !u!114 &27
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2100,9 +2698,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1007
+    x: 815
     y: 73
-    width: 481
+    width: 326
     height: 546
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2150,29 +2748,29 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 481
+      width: 326
       height: 525
     m_Scale: {x: 0.17736487, y: 0.17736487}
-    m_Translation: {x: 240.50002, y: 262.5}
+    m_Translation: {x: 163, y: 262.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1355.9619
+      x: -919.0095
       y: -1480
-      width: 2711.9238
+      width: 1838.019
       height: 2960
     m_MinimalGUI: 1
   m_defaultScale: 0.17736487
-  m_LastWindowPixelSize: {x: 481, y: 546}
+  m_LastWindowPixelSize: {x: 326, y: 546}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &24
+--- !u!114 &28
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2192,9 +2790,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 881
+    x: 676
     y: 640
-    width: 607
+    width: 465
     height: 359
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

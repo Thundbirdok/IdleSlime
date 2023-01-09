@@ -35,6 +35,11 @@ namespace GameResources.Health.Scripts
                     _amount = 0;
                 }
 
+                if (_amount > MaxAmount)
+                {
+                    _amount = MaxAmount;
+                }
+                
                 OnAmountChange?.Invoke(_amount - previous);
                 
                 if (_amount == 0)
@@ -49,9 +54,11 @@ namespace GameResources.Health.Scripts
         public bool IsInvincible => _invincibleSeconds > 0;
 
         [SerializeField]
-        public StatHandler maxAmount;
+        private StatHandlerSo maxAmountStatHandler;
+        
+        public IStatHandler MaxAmountStatHandler { get; private set; }
 
-        public int MaxAmount => maxAmount.Value;
+        public int MaxAmount => MaxAmountStatHandler.Value;
         
         private MonoBehaviour _monoBehaviour;
 
@@ -60,8 +67,20 @@ namespace GameResources.Health.Scripts
         [NonSerialized]
         private float _invincibleSeconds;
 
+        public Health() { }
+
+        public Health(StatHandler maxAmountStatHandler)
+        {
+            MaxAmountStatHandler = maxAmountStatHandler;
+        }
+
         public void Init(MonoBehaviour gameObject)
         {
+            if (maxAmountStatHandler != null)
+            {
+                MaxAmountStatHandler = maxAmountStatHandler;   
+            }
+
             _monoBehaviour = gameObject;
         }
 

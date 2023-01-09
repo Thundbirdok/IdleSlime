@@ -1,0 +1,22 @@
+{
+    "name": "Stats.Editor.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e372c541aba5148868e12aa078ca7c20",
+        "GUID:24933023e2cf10449bfda707d4403af8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NSubstitute.dll",
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

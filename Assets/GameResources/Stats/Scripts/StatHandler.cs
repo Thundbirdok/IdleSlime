@@ -1,24 +1,26 @@
+using System;
+using System.Linq;
+using UnityEngine;
+
 namespace GameResources.Stats.Scripts
 {
-    using System;
-    using GameResources.JsonSave;
-    using UnityEngine;
+    using JsonSave = GameResources.JsonSave.JsonSave;
 
-    [CreateAssetMenu(fileName = "StateHandler", menuName = "Stats/Handler")]
-    public class StatHandler : SavableScriptableObject
+    [Serializable]
+    public class StatHandler : IStatHandler
     {
         public int NextLevelCost
         {
             get
             {
-                var nextLevel = _currentLevel + 1;
+                var nextLevel = CurrentLevel + 1;
                 
-                if (nextLevel >= levels.Length)
+                if (nextLevel >= Levels.Length)
                 {
-                    return levels[^1].Cost + (nextLevel - levels.Length + 1) * 10;
+                    return Levels.Last().Cost + (nextLevel - Levels.Length + 1) * 10;
                 }
                 
-                return levels[nextLevel].Cost;
+                return Levels[nextLevel].Cost;
             }
         }
 
@@ -26,12 +28,12 @@ namespace GameResources.Stats.Scripts
         {
             get
             {
-                if (_currentLevel >= levels.Length)
+                if (CurrentLevel >= Levels.Length)
                 {
-                    return levels[^1].Value + (_currentLevel - levels.Length + 1) * 10;
+                    return Levels.Last().Value + (CurrentLevel - Levels.Length + 1) * 10;
                 }
                 
-                return levels[_currentLevel].Value;
+                return Levels[CurrentLevel].Value;
             }
         }
 
@@ -39,39 +41,45 @@ namespace GameResources.Stats.Scripts
         public string Description { get; private set; } = "";
 
         [SerializeField]
+        private string name;
+        
+        [SerializeField]
         private Stat[] levels;
-
+        public Stat[] Levels => levels;
+        
         private string FileName => name + ".json";
 
         private const string KEY = "Level";
         
         private JsonSave _save;
         
-        [NonSerialized]
-        private int _currentLevel;
+        [field: NonSerialized] 
+        public int CurrentLevel { get; private set; }
 
-        public override void Load()
+        public StatHandler() {}
+
+        public StatHandler(Stat[] levels, string description, string name = "")
+        {
+            this.levels = levels;
+            Description = description;
+            this.name = name;
+        }
+        
+        public void Load()
         {
             _save = new JsonSave(FileName, KEY);
             
-            _currentLevel = _save.Load();
+            CurrentLevel = _save.Load();
         }
 
-        public override void Save()
+        public void Save()
         {
-            _save.Save(_currentLevel);
+            _save.Save(CurrentLevel);
         }
 
         public void AddLevel(int value)
         {
-            _currentLevel += value;
-        }
-        
-        [Serializable]
-        private class Stat
-        {
-            public int Value;
-            public int Cost;
+            CurrentLevel += value;
         }
     }
 }

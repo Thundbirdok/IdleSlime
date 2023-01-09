@@ -16,7 +16,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         private PathFollower pathFollower;
 
         [SerializeField]
-        private StatHandler damage;
+        private StatHandlerSo damage;
 
         [NonSerialized]
         private bool _isTriggered;

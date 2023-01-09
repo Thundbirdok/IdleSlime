@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00f23ac665369748b51948e06bbe88d, type: 3}
   m_Name: EnemyHealth
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: EnemyHealth
-  levels:
-  - Value: 100
-    Cost: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  statHandler:
+    <Description>k__BackingField: EnemyHealth
+    name: EnemyHealth
+    levels:
+    - <Value>k__BackingField: 100
+      <Cost>k__BackingField: 0

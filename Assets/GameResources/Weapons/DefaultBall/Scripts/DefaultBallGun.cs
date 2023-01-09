@@ -14,7 +14,7 @@ namespace GameResources.Weapons.DefaultBall.Scripts
         private Collider ownerCollider;
         
         [SerializeField]
-        private StatHandler fireRate;
+        private StatHandlerSo fireRate;
 
         [SerializeField] 
         private DefaultGunProjectile projectilePrefab;

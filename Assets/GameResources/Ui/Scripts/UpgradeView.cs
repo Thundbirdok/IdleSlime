@@ -13,7 +13,7 @@ namespace GameResources.Ui.Scripts
         private MoneyHandler moneyHandler;
 
         [SerializeField]
-        private StatHandler upgrade;
+        private StatHandlerSo upgrade;
         
         [SerializeField]
         private Button buy;
