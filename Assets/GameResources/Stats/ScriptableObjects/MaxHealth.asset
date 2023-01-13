@@ -10,19 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b00f23ac665369748b51948e06bbe88d, type: 3}
-  m_Name: Health
+  m_Name: MaxHealth
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   statHandler:
-    <Description>k__BackingField: MaximumHealth
+    <Description>k__BackingField: Maximum Health
     name: MaximumHealth
     levels:
     - <Value>k__BackingField: 100
