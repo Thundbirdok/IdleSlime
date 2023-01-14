@@ -25,7 +25,11 @@ Task("Build-Android")
         {
             ExecuteMethod = "Editor.Builder.UnityBuilder.BuildAndroid",
             BuildTarget = Android,
-            LogFile = "./Builds/Android/unity.log"
+            LogFile = "./Builds/Android/unity.log",
+/*
+            RunTests = true,
+            Quit = false
+*/
         },
         new UnityEditorSettings 
         {
