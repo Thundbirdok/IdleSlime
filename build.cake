@@ -23,6 +23,7 @@ Task("Build-Android")
     (
         new UnityEditorArguments
         {
+            ProjectPath = ".",
             ExecuteMethod = "Editor.Builder.UnityBuilder.BuildAndroid",
             BuildTarget = Android,
             LogFile = "./Builds/Android/unity.log",
