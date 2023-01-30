@@ -1,6 +1,13 @@
 #addin nuget:?package=Cake.Unity&version=0.9.0
 #tool nuget:?package=Cake.Tool&version=3.0.0
 
+#tool nuget:?package=NuGet.CommandLine&version=6.4.0
+
+#tool nuget:?package=NUnit&version=3.13.3
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.16.2
+#tool nuget:?package=NUnit.Extension.NUnitProjectLoader&version=3.7.1
+#tool nuget:?package=NUnit3TestAdapter&version=4.3.1
+
 using static Cake.Unity.Arguments.BuildTarget;
 
 var target = Argument("target", "Build-Android");
@@ -15,8 +22,15 @@ Task("Clean-Android")
     CleanDirectory($"./Builds/Android");
 });
 
-Task("Build-Android")
+Task("Restore-NuGet-Packages")
     .IsDependentOn("Clean-Android")
+	.Does(() =>
+{
+	NuGetRestore("./IdleSlime.sln");
+});
+
+Task("Build-Android")    
+    .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
 {
     UnityEditor
@@ -26,24 +40,31 @@ Task("Build-Android")
             ProjectPath = ".",
             ExecuteMethod = "Editor.Builder.UnityBuilder.BuildAndroid",
             BuildTarget = Android,
+            TestPlatform = TestPlatform.Android,        
             LogFile = "./Builds/Android/unity.log",
-/*
-            RunTests = true,
-            Quit = false
-*/
         },
         new UnityEditorSettings 
         {
-            RealTimeLog = true        
+            RealTimeLog = true
         }
     );
 });
 
 Task("Test-Android")
-    .IsDependentOn("Build-Android") 
+    .IsDependentOn("Build-Android")    
     .Does(() =>
-{
-    Console.WriteLine("Tests would be here");    
+{    
+    var testAssemblies = GetFiles("Library/ScriptAssemblies/*.Tests.dll");
+
+    NUnit3
+    (
+        testAssemblies,
+        new NUnit3Settings 
+        {
+		    NoResults = false,
+            Work = "./Builds/Android/"
+        }
+    );
 });
 
 //////////////////////////////////////////////////////////////////////
